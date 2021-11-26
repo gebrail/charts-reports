@@ -50,3 +50,5 @@ return view('graph', compact('chart'));
 
 ![Imagen de prueba](https://www.amcharts.com/wp-content/uploads/2013/11/demo_129_none-1-1024x690.png "Estamos en fase beta")
 
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
