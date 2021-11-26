@@ -662,7 +662,7 @@
 @endif
 
 @if ($options['chart_type'] == 'Line & Area')
-    @elseif($options['chart_subtype'] == 'date based data')
+    @if($options['chart_subtype'] == 'date based data')
         <!-- Chart code -->
         <script>
             am5.ready(function() {
@@ -799,5 +799,5 @@
 
             }); // end am5.ready()
         </script>
-
+    @endif
 @endif
