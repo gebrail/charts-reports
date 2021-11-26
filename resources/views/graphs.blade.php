@@ -617,8 +617,7 @@
                         forceHidden: true
                     }
                 },
-                    @foreach($datasets[0] as $data)
-
+                    @foreach($datasets as $data)
                             {!!  $data->toJson(); !!},
                     @endforeach
                 ];

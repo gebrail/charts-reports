@@ -16,10 +16,6 @@ class GenerateCharTest extends TestCase
                                  <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>';
         $this->assertEquals($bibliotecas_amcharts,$chart->renderChartLibrary());
 
-
-
-
-
     }
 
 

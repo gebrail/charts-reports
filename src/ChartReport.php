@@ -58,7 +58,7 @@ class ChartReport extends ChartReportRepositories
                 }
                 if($this->options['chart_subtype']=='date based data')
                 {
-                    if(isset($this->options['parse_date'])=='yes')
+                    if(isset($this->options['parse_date']) &&  $this->options['parse_date']=='yes')
                     {
                        $dataset= ChartReportRepositories::parse_date_based_data_chart($this->options);
                     }
