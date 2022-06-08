@@ -1,7 +1,7 @@
 {
     "name": "gebrail/charts-reports",
     "description": "Package to generate charts with Amcharts directly from laravel , without interacting with JavaScript.",
-    "License": "MIT",
+    "license": "MIT",
     "authors": [
         {
             "name": "Wilson Gebrail Barrera",
