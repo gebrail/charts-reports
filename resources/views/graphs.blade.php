@@ -182,7 +182,19 @@
                 series.appear(1000);
                 chart.appear(1000, 100);
 
+                var exporting = am5plugins_exporting.Exporting.new(root, {
+                    menu: am5plugins_exporting.ExportingMenu.new(root, {})
+                });
+
+                setTimeout(function() {
+                    exporting.export("jpg").then(function(imgData) {
+                        document.getElementById("{{ $options['chart_name'] ?? 'chartdiv' }}").src = imgData;
+                    });
+                }, 2000);
+
+
             }); // end am5.ready()
+
         </script>
     @endif
 
@@ -411,7 +423,7 @@
     @elseif($options['chart_subtype'] == 'dragging pie slices')
         <!-- Chart code -->
         <script>
-            var prueba;
+
             am5.ready(function() {
 
 // Create root element
@@ -601,25 +613,24 @@
                 });
 
 // data
-
-                var data = [{
-                    category: "Dummy",
-                    value: 1000,
-                    settings: {
-                        fill: am5.color(0xdadada),
-                        stroke: am5.color(0xdadada),
-                        fillOpacity: 0.3,
-                        strokeDasharray: [4, 4],
-                        tooltipText: null,
-                        draggable: false
-                    },
-                    dummyLabelSettings: {
-                        forceHidden: true
-                    }
-                },
-                    @foreach($datasets as $data)
+                var data = [
+                    {
+                        category: "Dummy",
+                        value: 1000,
+                        settings: {
+                            fill: am5.color(0xdadada),
+                            stroke: am5.color(0xdadada),
+                            fillOpacity: 0.3,
+                            strokeDasharray: [4, 4],
+                            tooltipText: null,
+                            draggable: false
+                        },
+                        dummyLabelSettings: {
+                            forceHidden: true
+                        }
+                    },@foreach($datasets[0] as $data)
                             {!!  $data->toJson(); !!},
-                    @endforeach
+                            @endforeach
                 ];
 
 // show/hide dummy slice depending if there are other visible slices

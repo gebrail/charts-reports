@@ -92,6 +92,14 @@ class ChartReport extends ChartReportRepositories
                                  <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>';
     }
 
+    public function renderExport(){
+        return '<script src="https://cdn.amcharts.com/lib/5/plugins/exporting.js"></script>';
+
+
+
+    }
+
+
     /**
      * @throws \Exception
      */

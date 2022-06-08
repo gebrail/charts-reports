@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Generate graph of type {{chart_type}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <style>:host{display:block;position:relative;contain:content;}:host([hidden]){display:none;}
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sindresorhus/github-markdown-css@4/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/PrismJS/prism@1/themes/prism.min.css">
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="markdown-body">
+
+            <h1 id="charts-reports">Generate graph of type {{chart_subtype}}</h1>
+
+            <p>Add the following lines of code</p>
+
+            <h4>In your controller</h4>
+
+            <pre class="language-php" tabindex="0"><code class="language-php"><span class="token keyword">use</span> <span class="token package">Gebrail<span class="token punctuation">\</span>ChartsReports<span class="token punctuation">\</span>ChartReport</span><span class="token punctuation">;</span>
+
+<span class="token comment">// ...</span>
+
+<span class="token variable">${{chart_data}}</span> <span class="token operator">=</span> the sql query<span class="token operator">-&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ <span class="token variable">$options</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string single-quoted-string">'chart_name'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'{{chart_name}}'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'chart_type'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'{{chart_type}}'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'chart_subtype'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'{{chart_subtype}}'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'categoryXField'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'{{categoryXField}}'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'categoryYField'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'{{categoryYField}}'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'parse_date'</span><span class="token operator">=&gt;</span> <span class="token variable">{{parse_date}}</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'chart_data'</span><span class="token operator">=&gt;</span> <span class="token variable">${{chart_data}}</span><span class="token punctuation">,</span>
+           <span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token variable">$chart</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ChartReport</span><span class="token punctuation">(</span><span class="token variable">$options</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">return</span> <span class="token function">view</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'myview'</span><span class="token punctuation">,</span> <span class="token function">compact</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'chart'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+<h4>In your View</h4>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token class-name">&lt;!doctype html&gt;
+  &lt;html lang="en"&gt;</span>
+    &lt;head&gt;
+      <span class="token string single-quoted-string"> {!! $chart-&gt;renderChartLibrary() !!}</span>
+      <span class="token string single-quoted-string"> {!! $chart-&gt;renderJs() !!}</span>
+    &lt;/head&gt;
+    &lt;body&gt;
+      <span class="token string single-quoted-string">{!! $chart-&gt;renderHtml() !!}</span>
+    &lt;/body&gt;
+  <span class="token class-name">&lt;/html&gt;</span>
+                </code></pre>
+
+                <h3>The result should be similar to the following image</h3>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html>
